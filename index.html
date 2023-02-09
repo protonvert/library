@@ -1,15 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="script.js" defer></script>
-    <link rel="stylesheet" href="normalize.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="normalize.css" />
+    <link rel="stylesheet" href="style.css" />
     <title>Library</title>
-</head>
-<body>
-    
-</body>
+  </head>
+  <body>
+    <header>
+      <h1 id="hero-header">Simple Library</h1>
+    </header>
+    <div class="button-section">
+      <button id="add-book">Add Book</button>
+    </div>
+
+    <section class="book--grid">
+      <!-- Cards will appear here -->
+    </section>
+
+    <div class="form-popup">
+      <h2>Book Entry</h2>
+      <img src="icons/exit.svg" alt="exit form" />
+      <form class="form-container">
+        <div>
+          <label for="book-title-entry">Book Title</label>
+          <input type="text" id="book-title-entry" />
+        </div>
+        <div>
+          <label for="book-author-entry">Book Author</label>
+          <input type="text" id="book-author-entry" />
+        </div>
+
+        <div>
+          <label for="book-pages-entry">Book Pages</label>
+          <input type="number" id="book-pages-entry" />
+        </div>
+
+        <div class="book-read-entry-div">
+          <label for="book-read-entry">Read</label>
+          <input type="radio" id="read" name="book-read" value="Read" />
+
+          <label for="book-read-entry">Not Read</label>
+          <input
+            type="radio"
+            id="not-read"
+            name="book-read"
+            value="Not-read"
+            checked
+          />
+        </div>
+        <div>
+          <button type="submit" id="submit-new-book">Submit</button>
+        </div>
+      </form>
+    </div>
+  </body>
 </html>
