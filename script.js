@@ -1,35 +1,29 @@
+/* eslint-disable no-multi-spaces */
 /* eslint-disable no-plusplus */
 /* eslint-disable no-console */
 /* eslint-disable prefer-destructuring */
 /* eslint-disable no-unused-vars */
 /* eslint-disable prefer-const */
 const addBookButton = document.querySelector('#add-book');
-
 const bookGrid = document.querySelector('.book--grid');
 const formPopUp = document.querySelector('.form-popup');
-
 const submitBook = document.querySelector('#submit-new-book');
-
 const exitForm = document.querySelector('img[src="icons/exit.svg"]');
 
-let discardCard;
-// = document.querySelectorAll('.book--card-remove');
-
-let bookCardToggleRead;
-
-let bookCards;
+let discardCard; // button for removing book card
+let bookCardToggleRead; // button to toggle if a book is read
 
 const myLibrary = []; // array of book objects
 
 function Book() {
-  // book object constructor=
+  // book object constructor
+  let title = '';
+  let author = '';
+  let pages;
+  let read = 'false';
 }
 
 Book.prototype = {
-  title: '',
-  author: '',
-  pages: undefined,
-  read: 'false',
 
   setTitle(title) {
     this.title = title;
@@ -51,6 +45,7 @@ Book.prototype = {
     }
   },
   addCardToPage() {
+    // this method creates a book card html element
     let bookCard = document.createElement('div');
     bookCard.setAttribute('class', `book--card ${this.title}`);
     let bookTitle = document.createElement('h1');
@@ -91,10 +86,12 @@ Book.prototype = {
 };
 
 addBookButton.addEventListener('click', () => {
+  // clicking this add book button makes form appear for book info entry
   formPopUp.style.display = 'block';
 });
 
-function getValues() {
+function acquireBookFormInfo() {
+  // gathers info from the form and places it into new book
   let valueArray = Array.from(
     document.querySelectorAll('.form-container input'),
   );
@@ -115,6 +112,8 @@ function getValues() {
 }
 
 function refreshCards() {
+  // refreshes all cards on page to align with myLibrary[]
+  // re-applies event listeners
   bookGrid.innerHTML = '';
   myLibrary.forEach((bookElement) => {
     bookElement.addCardToPage();
@@ -137,19 +136,23 @@ function refreshCards() {
 }
 
 myLibrary.remove = (index) => {
+  // simplified version of splicing away an array item in myLibrary[]
   myLibrary.splice(index, 1);
   refreshCards();
 };
 
 submitBook.addEventListener('click', () => {
+  // when clicking submit book button, removes form from view, acquires book info, creates new book
+  // resets form info, and refreshes the cards
   event.preventDefault();
   formPopUp.style.display = 'none';
-  getValues();
+  acquireBookFormInfo();
   document.querySelector('.form-container').reset();
   refreshCards();
 });
 
 exitForm.addEventListener('click', () => {
+  // x-style button to exit form
   document.querySelector('.form-container').reset();
   formPopUp.style.display = 'none';
 });
